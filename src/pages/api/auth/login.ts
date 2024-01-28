@@ -16,12 +16,12 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
     let enteredData = req.body;
     enteredData = JSON.parse(enteredData)
 
-    const userData = await db.collection('users').findOne({ email: enteredData.email });
+    const userData = await db?.collection('users').findOne({ email: enteredData.email });
 
     if (!userData) {
         return res.json({

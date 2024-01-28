@@ -17,7 +17,7 @@ export default async function handler(
     });
     
     const database = await db_connect;
-    const db = database.db("task-management");   
+    const db = database?.db("task-management");   
     
     let enteredData = req.body;
     enteredData = JSON.parse(enteredData);
@@ -29,7 +29,7 @@ export default async function handler(
         });
     }
 
-    const userExist = await db.collection('users').findOne({ email: enteredData.email });
+    const userExist = await db?.collection('users').findOne({ email: enteredData.email });
 
     if (userExist) {
         return res.json({
@@ -48,7 +48,7 @@ export default async function handler(
         isAdmin: false
     }
 
-    const result = await db.collection('users').insertOne(userData);
+    const result = await db?.collection('users').insertOne(userData);
 
     res.status(200).json(result);
 }

@@ -14,10 +14,10 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
 
-    const users = await db.collection('users').find({ assignedTask: false, isAdmin: false }, { projection: { name: 1 } }).toArray();
+    const users = await db?.collection('users').find({ assignedTask: false, isAdmin: false }, { projection: { name: 1 } }).toArray();
 
     res.json(users)
 }

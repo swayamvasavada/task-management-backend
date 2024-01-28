@@ -15,14 +15,14 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
     let enteredData = req.body;
     enteredData = JSON.parse(enteredData);
     
     const userId = new ObjectId(enteredData.userId);
 
-    let user = await db.collection('users').findOne({ _id: userId });
+    let user = await db?.collection('users').findOne({ _id: userId });
 
     const taskData = {
         taskName: enteredData.taskName,
@@ -34,9 +34,9 @@ export default async function handler(
         status: 'Pending'
     };
 
-    const result = await db.collection('tasks').insertOne(taskData);
+    const result = await db?.collection('tasks').insertOne(taskData);
 
-    const userResult = await db.collection('users').updateOne({ _id: userId }, { $set: { assignedTask: result.insertedId } });
+    const userResult = await db?.collection('users').updateOne({ _id: userId }, { $set: { assignedTask: result?.insertedId } });
 
     res.json(result);
 }

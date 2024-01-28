@@ -17,7 +17,7 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
     let formData = req.body;
     formData = JSON.parse(formData);
@@ -25,9 +25,9 @@ export default async function handler(
 
     const decryptedData = jwt.verify(token, 'super-secret');
 
-    const userData = await db.collection('users').updateOne({ _id: new ObjectId(decryptedData.data.id) }, {$set: {assignedTask: false}});    
+    const userData = await db?.collection('users').updateOne({ _id: new ObjectId(decryptedData.data.id) }, {$set: {assignedTask: false}});    
     
-    const result = await db.collection('tasks').updateOne({ _id: new ObjectId(taskId) }, {$set: {status: 'Complete'}});
+    const result = await db?.collection('tasks').updateOne({ _id: new ObjectId(taskId) }, {$set: {status: 'Complete'}});
     
     res.json(result);
 }

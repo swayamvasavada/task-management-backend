@@ -15,16 +15,16 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
     const taskId = req.body;
     
-    const user = await db.collection('tasks').findOne({_id: new ObjectId(taskId)}, {projection: {assignedUserId: 1}});
+    const user = await db?.collection('tasks').findOne({_id: new ObjectId(taskId)}, {projection: {assignedUserId: 1}});
 
-    const result = await db.collection('tasks').deleteOne({_id: new ObjectId(taskId)});
+    const result = await db?.collection('tasks').deleteOne({_id: new ObjectId(taskId)});
 
-    if (result.deletedCount) {
-        await db.collection('users').updateOne({_id: new ObjectId(user?.assignedUserId)}, {$set: {assignedTask: false}});
+    if (result?.deletedCount) {
+        await db?.collection('users').updateOne({_id: new ObjectId(user?.assignedUserId)}, {$set: {assignedTask: false}});
     }
 
     res.json(result);

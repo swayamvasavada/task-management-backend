@@ -16,7 +16,7 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
     let enteredData = req.body;
     enteredData = JSON.parse(enteredData);
@@ -26,13 +26,13 @@ export default async function handler(
     const userId = new ObjectId(enteredData.userId);
 
 
-    const previousData = await db.collection('tasks').findOne({ _id: new ObjectId(taskId) });
+    const previousData = await db?.collection('tasks').findOne({ _id: new ObjectId(taskId) });
 
     if (previousData?.assignedUserId !== enteredData.userId) {
-        await db.collection('users').updateOne({ _id: new ObjectId(previousData?.assignedUserId) }, { $set: { assignedTask: false } });
+        await db?.collection('users').updateOne({ _id: new ObjectId(previousData?.assignedUserId) }, { $set: { assignedTask: false } });
     }
 
-    let user = await db.collection('users').findOne({ _id: userId });
+    let user = await db?.collection('users').findOne({ _id: userId });
 
 
 
@@ -45,9 +45,9 @@ export default async function handler(
         assignedUser: user?.name
     };
 
-    const result = await db.collection('tasks').updateOne({ _id: new ObjectId(taskId) }, { $set: taskData });
+    const result = await db?.collection('tasks').updateOne({ _id: new ObjectId(taskId) }, { $set: taskData });
 
-    const userResult = await db.collection('users').updateOne({ _id: userId }, { $set: { assignedTask: new ObjectId(taskId) } });
+    const userResult = await db?.collection('users').updateOne({ _id: userId }, { $set: { assignedTask: new ObjectId(taskId) } });
 
     res.json(result);
 }

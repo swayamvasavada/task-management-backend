@@ -16,11 +16,11 @@ export default async function handler(
     });
 
     const database = await db_connect;
-    const db = database.db("task-management");
+    const db = database?.db("task-management");
 
     const taskId = req.body;    
 
-    const tasks = await db.collection('tasks').findOne({_id: new ObjectId(taskId)});
+    const tasks = await db?.collection('tasks').findOne({_id: new ObjectId(taskId)});
 
     res.json(tasks);
 }

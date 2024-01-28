@@ -1,40 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# Task Management System
+
+This project facilitates efficient task management, allowing for the creation and organization of tasks while distinguishing between incomplete and completed ones. 
+
+The implementation involved utilizing technologies such as React.JS, Next.JS and MongoDB
+
+
+## Tech Stack
+
+**Client:** React.JS
+
+**Server:** Next.JS
+
+**Database:** MongoDB
+
 
 ## Getting Started
 
-First, run the development server:
+To use it, Follow the installation guide:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js
+- MongoDb Atlas || MongoDb local server
+
+### Server Installation 
+
+    1. Clone Repo
+```sh
+ https://github.com/swayamvasavada/task-management-backend.git 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    2. Install dependencies / npm pacakages
+```sh
+npm install
+```
+    3. Create .env file in root directory
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+    4. Determine using MongoDb Atlas or MongoDb local server
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+    5. Create Enviornment variable 'MONOGDB_URI' and set its value 
+    
+- For using atlas [Visit Atlas](https://www.mongodb.com/cloud/atlas/efficiency?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_core_prosp-brand_gic-null_apac-in_ps-all_desktop_eng_lead&utm_term=mongodb%20atlas%20sign%20up&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624347&adgroup=115749713263&cq_cmp=12212624347&gad_source=1&gclid=EAIaIQobChMIi83X88aAhAMVodlMAh35DwwQEAAYASACEgK8LfD_BwE)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- For using local server set MONOGDB_URI to mongodb://localhost:27017
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+####
 
-## Learn More
+    6. Start the app
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Check out Server installation guide](https://github.com/swayamvasavada/task-management-system.git)
+## Developers
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [@swayamvasavada](https://www.github.com/swayamvasavada)

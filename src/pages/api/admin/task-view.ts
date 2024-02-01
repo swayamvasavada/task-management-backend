@@ -17,7 +17,7 @@ export default async function handler(
     const database = await db_connect;
     const db = database?.db("task-management");
 
-    const tasks = await db?.collection('tasks').find({}, {projection: {taskName: 1, taskDesc: 1, deadline: 1}}).toArray();
+    const tasks = await db?.collection('tasks').find({}, {projection: {taskName: 1, taskDesc: 1, deadline: 1, status: 1}}).toArray();
 
     res.json(tasks);
 }
